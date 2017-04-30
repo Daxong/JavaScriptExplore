@@ -38,3 +38,17 @@ console.log(f.call(o,1,2,3)+ "  call()");
  * apply()和call()类似，但传入实参以数组形式,可以是类数组 也可以是真是数组
  */
 // f.apply(o,[1,2,3]);
+
+/*
+bind()把两个函数绑定要一个对象，此外，除了第一个实参外，传入bind()的实参也会绑定到this，这种附带应用是一种常见的函数式编程技术（currying）
+ */
+var sum = function(x,y){ return x+y;};
+
+var succ = sum.bind(null,1);
+succ(2)//x绑定要1，并传入2作为实参y
+function fo(y,z){
+    return this.x+y;
+}
+var g =f.bind({x:1}, 2);//{x:1}为对象 绑定到x，2绑定到y，
+//通过调用g(x)来调用{x:1}.f(x)
+g(3);//3绑定到z
